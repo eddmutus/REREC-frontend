@@ -13,7 +13,6 @@
 }
 .overlay-img {
   width: 100%;
-  height: 100vh;
 }
 .overlay-text {
   position: absolute;
@@ -21,7 +20,7 @@
   left: 30px;
   z-index: 100;
   text-align: center;
-  color: rgb(182, 179, 179);
+  color: rgb(10, 10, 10);
 }
 .overlay-quote {
   position: absolute;
@@ -29,36 +28,65 @@
   left: 30%;
   z-index: 100;
   text-align: center;
-  color: whitesmoke;
+  color: rgba(19, 9, 1, 0.945);
   font-style: italic;
   font-size: 2rem;
 }
 
-/* legend */
+/* legend container */
 .info {
-  padding: 2px 3px;
-  font: 14px;
+  padding: 8px 10px; /* bigger padding */
+  font: 16px/20px Arial, sans-serif; /* larger font */
   background: whitesmoke;
-  border-radius: 5px;
+  border-radius: 8px;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);
 }
-.legend {
-  text-align: left;
-  line-height: 18px;
-  color: #555;
-}
+
+/* legend title */
 .info.legend h4 {
-  margin: 0 0 5px;
-  padding: 0;
+  margin: 0 0 10px;
+  font-size: 18px;
+  font-weight: bold;
 }
+
+/* each legend row */
 .legend-item {
   display: flex;
   align-items: center;
-  margin-bottom: 5px;
+  margin-bottom: 6px;
 }
+
+/* text label */
 .legend-item span {
-  margin-right: 5px;
+  margin-left: 8px;
+  font-size: 15px;
+  font-weight: 500;
+  color: #333;
 }
+
+/* icon size */
 .legend-item img {
-  width: 20px; /* Adjust the size as needed */
+  font-size: 14px;
+  width: 28px;
   height: auto;
+}
+
+.legend-item img,
+.legend-item i {
+  margin-right: 10px;
+  flex-shrink: 0;
+}
+
+.legend-item i {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  border-radius: 3px;
+  opacity: 0.9;
+}
+.legend-item i.line {
+  width: 34px;
+  height: 0;
+  border-top-width: 4px !important;
+  margin-top: 4px;
 }

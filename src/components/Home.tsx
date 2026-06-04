@@ -7,9 +7,9 @@ const Home = () => {
     <div className="overlay">
       <img src={transformer} alt="transformer" className="overlay-img" />
       <Typography variant="h1" className="overlay-text">
-        Community Health Care
+        Kaing'utu Electrification Project
       </Typography>
-      <q className="overlay-quote">Transforming Healthcare, Together</q>
+      <q className="overlay-quote">A green energy-driven nation</q>
     </div>
   );
 };
