@@ -14,16 +14,14 @@ import {
   Popup,
   useMap,
 } from "react-leaflet";
-import L, { Map, Icon } from "leaflet";
+import L, { Map } from "leaflet";
 
 // MUI imports
 import {
   AppBar,
-  Button,
   Grid,
   Typography,
   CircularProgress,
-  IconButton,
 } from "@mui/material";
 
 // icons-png
@@ -271,7 +269,7 @@ const Explorer = () => {
             ))}
             <LayersControl.Overlay checked name="Parcels">
               <FeatureGroup>
-                {parcels.map((parcel) => (
+                {parcels.map((parcel:any) => (
                   <GeoJSON
                     key={parcel.fid}
                     data={parcel.geom}
@@ -290,7 +288,7 @@ const Explorer = () => {
             </LayersControl.Overlay>
             <LayersControl.Overlay checked name="Single Phase">
               <FeatureGroup>
-                {singlePhaseLines.map((singlePhaseLine) => (
+                {singlePhaseLines.map((singlePhaseLine:any) => (
                   <GeoJSON
                     key={singlePhaseLine.fid}
                     data={singlePhaseLine.geom}
