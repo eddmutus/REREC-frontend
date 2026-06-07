@@ -93,38 +93,38 @@ const Explorer = () => {
     data: customers,
     error: customersError,
     isLoading: customersLoading,
-  } = useSWR<Customers[]>(`${API_URL}/api/v1/customers/`, fetcher);
+  } = useSWR<Customers[]>("https://rerec-backend.onrender.com/api/v1/customers/", fetcher);
 
   const {
     data: HTPoles,
     error: HTPolesError,
     isLoading: HTPolesLoading,
-  } = useSWR<HTPoles[]>(`${API_URL}/api/v1/ht_poles/`, fetcher);
+  } = useSWR<HTPoles[]>("https://rerec-backend.onrender.com/api/v1/ht_poles/", fetcher);
   const {
     data: LVPoles,
     error: LVPolesError,
     isLoading: LVPolesLoading,
-  } = useSWR<LVPoles[]>(`${API_URL}/api/v1/lv_poles/`, fetcher);
+  } = useSWR<LVPoles[]>("https://rerec-backend.onrender.com/api/v1/lv_poles/", fetcher);
   
   const {
     data: existingHTLine,
     error: existingHTLineError,
     isLoading: existingHTLineLoading,
-  } = useSWR<any>(`${API_URL}/api/v1/existing_ht_line/`, fetcher);
+  } = useSWR<any>("https://rerec-backend.onrender.com/api/v1/existing_ht_line/", fetcher);
   const {
     data: HTLineConstructed,
     error: HTLineConstructedError,
     isLoading: HTLineConstructedLoading,
-  } = useSWR<any>(`${API_URL}/api/v1/ht_line_constructed/`, fetcher);
+  } = useSWR<any>("https://rerec-backend.onrender.com/api/v1/ht_line_constructed/", fetcher);
   const { data: parcels, error: parcelsError } = useSWR<any>(
-    `${API_URL}/api/v1/parcels/`,
+    "https://rerec-backend.onrender.com/api/v1/parcels/",
     fetcher
   );
   const {
     data: singlePhaseLines,
     error: singlePhaseLinesError,
     isLoading: singlePhaseLinesLoading,
-  } = useSWR<any>(`${API_URL}/api/v1/single_phase/`, fetcher);
+  } = useSWR<any>("https://rerec-backend.onrender.com/api/v1/single_phase/", fetcher);
 
   // loading state
   if (
