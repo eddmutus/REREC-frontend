@@ -80,8 +80,6 @@ interface LVPoles {
   height_m_field: number;
 }
 
-// URL for API endpoints
-const API_URL = import.meta.env.API_URL
 // Fetcher function for SWR
 const fetcher = (url: string) => axios.get(url).then((res) => res.data);
 
@@ -107,12 +105,12 @@ const Explorer = () => {
   } = useSWR<LVPoles[]>("https://rerec-backend.onrender.com/api/v1/lv_poles/", fetcher);
   
   const {
-    data: existingHTLine,
+    data: existingHTLine = [],
     error: existingHTLineError,
     isLoading: existingHTLineLoading,
   } = useSWR<any>("https://rerec-backend.onrender.com/api/v1/existing_ht_line/", fetcher);
   const {
-    data: HTLineConstructed,
+    data: HTLineConstructed = [],
     error: HTLineConstructedError,
     isLoading: HTLineConstructedLoading,
   } = useSWR<any>("https://rerec-backend.onrender.com/api/v1/ht_line_constructed/", fetcher);
@@ -121,7 +119,7 @@ const Explorer = () => {
     fetcher
   );
   const {
-    data: singlePhaseLines,
+    data: singlePhaseLines = [],
     error: singlePhaseLinesError,
     isLoading: singlePhaseLinesLoading,
   } = useSWR<any>("https://rerec-backend.onrender.com/api/v1/single_phase/", fetcher);
@@ -279,7 +277,7 @@ const Explorer = () => {
                       fillColor: "#5c5757ff",
                       fillOpacity: 0.4,
                     })}
-                    onEachFeature={(feature, layer) => {
+                    onEachFeature={(_, layer) => {
                       layer.bindPopup(`<b>Parcel No:</b> ${parcel.id}`);
                     }}
                   />
@@ -314,7 +312,7 @@ const Explorer = () => {
             </LayersControl.Overlay>
             <LayersControl.Overlay checked name="Customers">
               <FeatureGroup>
-                {customers.map((customer) => {
+                {customers?.map((customer:any) => {
                   return (
                     <Marker
                       key={customer.fid}
@@ -335,7 +333,7 @@ const Explorer = () => {
             </LayersControl.Overlay>
             <LayersControl.Overlay checked name="HT Poles">
               <FeatureGroup>
-                {HTPoles.map((HTPole) => {
+                {HTPoles?.map((HTPole) => {
                   return (
                     <Marker
                       key={HTPole.fid}
@@ -354,7 +352,7 @@ const Explorer = () => {
             </LayersControl.Overlay>
             <LayersControl.Overlay checked name="LV Poles">
               <FeatureGroup>
-                {LVPoles.map((LVPole) => {
+                {LVPoles?.map((LVPole) => {
                   return (
                     <Marker
                       key={LVPole.fid}
