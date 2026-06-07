@@ -82,6 +82,8 @@ interface LVPoles {
   height_m_field: number;
 }
 
+// URL for API endpoints
+const API_URL = import.meta.env.API_URL
 // Fetcher function for SWR
 const fetcher = (url: string) => axios.get(url).then((res) => res.data);
 
@@ -93,36 +95,38 @@ const Explorer = () => {
     data: customers,
     error: customersError,
     isLoading: customersLoading,
-  } = useSWR<Customers[]>("http://localhost:8000/api/v1/customers/", fetcher);
+  } = useSWR<Customers[]>(`${API_URL}/api/v1/customers/`, fetcher);
+
   const {
     data: HTPoles,
     error: HTPolesError,
     isLoading: HTPolesLoading,
-  } = useSWR<HTPoles[]>("http://localhost:8000/api/v1/ht_poles/", fetcher);
+  } = useSWR<HTPoles[]>(`${API_URL}/api/v1/ht_poles/`, fetcher);
   const {
     data: LVPoles,
     error: LVPolesError,
     isLoading: LVPolesLoading,
-  } = useSWR<LVPoles[]>("http://localhost:8000/api/v1/lv_poles/", fetcher);
+  } = useSWR<LVPoles[]>(`${API_URL}/api/v1/lv_poles/`, fetcher);
+  
   const {
     data: existingHTLine,
     error: existingHTLineError,
     isLoading: existingHTLineLoading,
-  } = useSWR<any>("http://localhost:8000/api/v1/existing_ht_line/", fetcher);
+  } = useSWR<any>(`${API_URL}/api/v1/existing_ht_line/`, fetcher);
   const {
     data: HTLineConstructed,
     error: HTLineConstructedError,
     isLoading: HTLineConstructedLoading,
-  } = useSWR<any>("http://localhost:8000/api/v1/ht_line_constructed/", fetcher);
+  } = useSWR<any>(`${API_URL}/api/v1/ht_line_constructed/`, fetcher);
   const { data: parcels, error: parcelsError } = useSWR<any>(
-    "http://localhost:8000/api/v1/parcels/",
+    `${API_URL}/api/v1/parcels/`,
     fetcher
   );
   const {
     data: singlePhaseLines,
     error: singlePhaseLinesError,
     isLoading: singlePhaseLinesLoading,
-  } = useSWR<any>("http://localhost:8000/api/v1/single_phase/", fetcher);
+  } = useSWR<any>(`${API_URL}/api/v1/single_phase/`, fetcher);
 
   // loading state
   if (
